@@ -20,8 +20,9 @@ jobs:
       run: |
         sudo apt update
         sudo apt install cargo
-        cargo install monolith
-        monolith https://garv-shah.github.io/EducationPerfected/settings/ -o output.html
+        docker pull capsulecode/singlefile
+        docker tag capsulecode/singlefile singlefile
+        docker run singlefile "https://garv-shah.github.io/EducationPerfected/settings/"  > output.html
         git clone git@github.com:KEN-2000l/EducationPerfected.git
         git config --global user.name "Settings Website Bot"
         git config --global user.email "<>"
